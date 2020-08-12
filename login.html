@@ -38,24 +38,44 @@
                 </div>
             </div>
         </nav>
-       
+
         <!-- About-->
         <section class="page-section bg-secondary" id="login">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h2 class="text-white mt-0" style="font-family: 'Permanent Marker', cursive;">Login Goes Here</h2>
+                        <h2 class="text-white mt-0" style="font-family: 'Permanent Marker', cursive;">
+                            <form style="align-items: center;">
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                  <div class="form-group" >
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <small id="emailHelp" class="form-text text-muted">Create account</small>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                  </div>
+                                  <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                                  <div class="container signin">
+                                    <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+                                  </div>
+                                </form></h2>
                         <hr class="divider light my-4" />
                         <p class="text-white-50 mb-4"> <b style="font-family: 'Gochi Hand', cursive; font-size: 22px">BooKonnect</b> Login Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes HereLogin Goes Here</p>
-                        
+
                     </div>
                 </div>
             </div>
         </section>
-       
+
         <!-- Footer-->
         <footer class="bg-primary py-5">
-		
+
 				<div><img src="assets/img/WhiteLogo.png"  style="display: block;
   margin-left: auto;
   margin-right: auto;
