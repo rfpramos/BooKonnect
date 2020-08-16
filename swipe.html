@@ -13,15 +13,18 @@
         }
 
         .card {
-            width: 320px;
+            width: 300px;
             height: 320px;
             position: absolute;
             top: 50%;
             left: 50%;
-            border-radius: 1%;
+            border-radius: 10%;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
             background-color: white;
             transform: translateX(-50%) translateY(-50%) scale(0.95);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: auto 320px;
         }
     </style>
         <meta charset="utf-8" />
@@ -69,7 +72,11 @@
     <script>
         /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
 
+ bookURL = ["HIV and AIDS - 179.00", "Integrated Science - 7.21", "Peter Pan - 5.81", "The Boy Who Harnessed the Wind - 3.59", "The Cure for HIV and AIDS - 24.99", "The Giving Tree - 7.96", "The Lorax - 3.99"]
+  titleAtHand ="hello"
         class Carousel {
+
+
 
             constructor(element) {
 
@@ -125,7 +132,7 @@
 
             }
 
-            onTap(e) {
+            onTap(e, titleAtHand) {
 
                 // get finger position on top card
                 let propX = (e.center.x - e.target.getBoundingClientRect().left) / e.target.clientWidth
@@ -147,6 +154,7 @@
                         'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)'
                 }, 100)
 
+window.alert(titleAtHand)
             }
 
             onPan(e) {
@@ -262,14 +270,22 @@
 
             push() {
 
+				
                 let card = document.createElement('div')
 
                 card.classList.add('card')
-
-                card.style.backgroundImage =
-                    "url('https://picsum.photos/320/320/?random=" + Math.round(Math.random() * 1000000) + "')"
-
+			card.style.backgroundColor = "transparent"
+			 titleAtHand = bookURL[Math.floor(Math.random() * bookURL.length)]
+                card.style.backgroundImage = 
+                    "url('assets/img/Books/"+  titleAtHand + ".jpg')"
+				
+					
+					
+			
+				
                 this.board.insertBefore(card, this.board.firstChild)
+				
+				 
 
             }
 
