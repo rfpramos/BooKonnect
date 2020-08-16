@@ -10,8 +10,38 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ .padding {
+    padding: 5rem !important
+}
 
 
+.table-image {
+  
+  thead {
+    td, th {
+      border: 0;
+      color: #666;
+      font-size: 0.8rem;
+    }
+  }
+  
+  td, th {
+    vertical-align: middle;
+    text-align: center;
+    
+    &.qty {
+      max-width: 2rem;
+    }
+  }
+}
+
+.price {
+  margin-left: 1rem;
+}
+
+.modal-footer {
+  padding-top: 0rem;
+}
 /*This is for the card*/
 a{
          text-decoration:none !important;

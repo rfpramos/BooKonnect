@@ -1,14 +1,67 @@
+$(function($) {
+$('[data-numeric]').payment('restrictNumeric');
+$('.cc-number').payment('formatCardNumber');
+$('.cc-exp').payment('formatCardExpiry');
+$('.cc-cvc').payment('formatCardCVC');
+$.fn.toggleInputError = function(erred) {
+this.parent('.form-group').toggleClass('has-error', erred);
+return this;
+};
+$('form').submit(function(e) {
+e.preventDefault();
+var cardType = $.payment.cardType($('.cc-number').val());
+$('.cc-number').toggleInputError(!$.payment.validateCardNumber($('.cc-number').val()));
+$('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
+$('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
+$('.cc-brand').text(cardType);
+$('.validation').removeClass('text-danger text-success');
+$('.validation').addClass($('.has-error').length ? 'text-danger' : 'text-success');
+});
+});
+
+
+
+
+
+
+
+
+
 $("#signup").click(function() {
 $("#first").fadeOut("fast", function() {
 $("#second").fadeIn("fast");
 });
 });
 
+
 $("#signin").click(function() {
 $("#second").fadeOut("fast", function() {
 $("#first").fadeIn("fast");
 });
 });
+
+function SomeDeleteRowFunction(price) {
+      // event.target will be the input element.
+      var td = event.target.parentNode; 
+      var tr = td.parentNode; // the row to be removed
+      tr.parentNode.removeChild(tr);
+	  
+	  currentPrice-=price;
+	  document.getElementById("currentTotal").innerHTML=currentPrice.toFixed(2);
+}
+var currentPrice=0;
+document.getElementById("currentTotal").innerHTML = currentPrice.toFixed(2);
+
+function addToCart(title, price,imu)
+{
+	document.getElementById("cartProper").innerHTML += "<tr> <td class='w-25'>   <img src='" + imu + "' class='img-fluid img-thumbnail' alt='" + title + "'" +
+
+              "</td> <td>" + title + "</td> <td>$"+price+"</td> <td> <button class='btn btn-danger btn-sm' onClick='SomeDeleteRowFunction("+price+");'>❌</button>" +
+              " <!-- <a href='#' class='btn btn-danger btn-sm'> <i class='fa fa-times'></i> </a>--> </td> </tr>	";
+			  currentPrice+=price;
+document.getElementById("currentTotal").innerHTML=currentPrice.toFixed(2);
+}
+
 
 
   
