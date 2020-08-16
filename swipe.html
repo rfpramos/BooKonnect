@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+	
 	<style>
         
 
         #board {
             width: 100%;
             height: 100%;
-            position: relative;
+            position: relative; padding:0px;
             overflow: hidden;
             
         }
 
         .card {
-            width: 300px;
-            height: 320px;
+            width: 500px;
+            height: 500px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -24,8 +25,33 @@
             transform: translateX(-50%) translateY(-50%) scale(0.95);
 			background-repeat: no-repeat;
 			background-position: center;
-			background-size: auto 320px;
+			background-size: auto 500px;
+			
         }
+		*{padding:0;margin:0;}
+
+body{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:18px;
+	background-color:#CCC;
+}
+
+.float{
+	position:fixed;
+	width:200px;
+	height:auto;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
     </style>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -64,16 +90,83 @@
                 </div>
             </div>
         </nav>
-
+<div class="modal fade success-popup" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        
+      </div>
+      <div class="modal-body text-center">
+	  <img src="assets/img/ColoredLogo.png" style="width:60px;"><br>
+         <img src="" style="width:200px; border-radius: 100px; padding: 10px; " id="confirmer">
+          <p class="lead">Are you sure you want to purchase and donate this?</p>
+          <a href="#" data-dismiss="modal" class="rd_more btn btn-default" onClick="addToCartSwipe(bookPlace.slice(-2)[0]);">Yes</a>
+		  <a href="#"  data-dismiss="modal" aria-label="Close">No</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
         <!-- About-->
         <section class="page-section" id="login"  style="background-image: url('assets/img/BlackLogo.png'); background-color: #ffdb58; ">
-            <div id="board"></div>
+            <div id="board" ></div>
+	
+
+<a href="#" class="float"  data-toggle="modal" data-target="#cartModal" style="font-family: 'Permanent Marker', cursive; font-size: 200%; ">
+Check Out
+</a>
+
+
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Your Shopping Cart
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-image">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+             
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="cartProper">
+           
+          </tbody>
+        </table> 
+        <div class="d-flex justify-content-end">
+          <h5>Total: <span class="price text-success">$</span> <span class="price text-success" id="currentTotal"> </span></h5>
+        </div>
+      </div>
+      <div class="modal-footer border-top-0 d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success"><a href="confirm.html" >Checkout</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: modalCart -->
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script>
         /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
 
  bookURL = ["HIV and AIDS - 179.00", "Integrated Science - 7.21", "Peter Pan - 5.81", "The Boy Who Harnessed the Wind - 3.59", "The Cure for HIV and AIDS - 24.99", "The Giving Tree - 7.96", "The Lorax - 3.99"]
-  titleAtHand ="hello"
+  titleAtHand =""
+  
+  const bookPlace = []
+  
         class Carousel {
 
 
@@ -132,7 +225,7 @@
 
             }
 
-            onTap(e, titleAtHand) {
+            onTap(e) {
 
                 // get finger position on top card
                 let propX = (e.center.x - e.target.getBoundingClientRect().left) / e.target.clientWidth
@@ -153,8 +246,8 @@
                     this.topCard.style.transform =
                         'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)'
                 }, 100)
-
-window.alert(titleAtHand)
+$('#myModal').modal()
+document.getElementById("confirmer").src ="assets/img/Books/" + bookPlace.slice(-2)[0]  + ".jpg"
             }
 
             onPan(e) {
@@ -276,6 +369,8 @@ window.alert(titleAtHand)
                 card.classList.add('card')
 			card.style.backgroundColor = "transparent"
 			 titleAtHand = bookURL[Math.floor(Math.random() * bookURL.length)]
+			 
+			 bookPlace.push(titleAtHand)
                 card.style.backgroundImage = 
                     "url('assets/img/Books/"+  titleAtHand + ".jpg')"
 				

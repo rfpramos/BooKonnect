@@ -40,6 +40,54 @@ $("#first").fadeIn("fast");
 });
 });
 
+
+function addToCartSwipe(jname)
+{
+	var price;
+	var title;
+	
+	var imu = "assets/img/Books/"+ jname + ".jpg"
+	
+	if (jname=="HIV and AIDS - 179.00")
+	{
+		price=179.00;
+		title="HIV and AIDS";
+	}
+	else if (jname=="Integrated Science - 7.21")
+	{
+		price=7.21;
+		title="Integrated Science";
+	}
+	else if (jname=="Peter Pan - 5.81")
+	{
+		price=5.81;
+		title="Peter Pan";
+	}
+	else if (jname=="The Boy Who Harnessed the Wind - 3.59")
+	{
+		price=3.59;
+		title="The Boy Who Harnessed the Wind";
+	}
+	else if (jname=="The Cure for HIV and AIDS - 24.99")
+	{
+		price=24.99;
+		title="The Cure for HIV and AIDS";
+	}
+	else if (jname=="The Giving Tree - 7.96")
+	{
+		price=7.96;
+		title="The Giving Tree";
+	}
+	else if (jname=="The Lorax - 3.99")
+	{
+		price=3.99;
+		title="The Lorax - 3.99";
+	}
+	addToCart(title, price,imu);
+	
+}
+
+
 function SomeDeleteRowFunction(price) {
       // event.target will be the input element.
       var td = event.target.parentNode; 
